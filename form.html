@@ -10,6 +10,12 @@
 
 <style>
 	
+	
+
+	#submit{
+		display: block;;
+	}
+
 	.hidden{
 		display:none;
 	}
@@ -28,6 +34,8 @@
 	let userNameError = document.getElementById("pdwError");
 
 	document.getElementById("submit").addEventListener("click",function(e){
+		
+		// prevent the form from submitting
 		e.preventDefault();
 		let userName = document.getElementById("username").value;
 		let pass = document.getElementById("pwd").value;
