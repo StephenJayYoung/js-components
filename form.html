@@ -1,0 +1,28 @@
+<form>
+  <label for="username">Username:</label><br>
+  <input type="text" id="username" name="username"><br>
+  <label for="pwd">Password:</label><br>
+  <input type="password" id="pwd" name="pwd">
+  <input type="submit" id="submit" name="submit">
+</form>
+
+
+<script>
+	
+	let submit = document.getElementById("submit");
+
+	document.getElementById("submit").addEventListener("click",function(){
+		let userName = document.getElementById("username").value;
+		let pass = document.getElementById("pwd").value;
+
+		alert(userName);
+		alert(pass);
+		alert(pass);
+
+
+		if(pass.value.length==0){
+			alert('please enter a valid pwd');
+		}
+	});
+
+</script>
