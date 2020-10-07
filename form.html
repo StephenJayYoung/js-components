@@ -1,28 +1,45 @@
-<form>
+<form id="form">
   <label for="username">Username:</label><br>
+  <p id ="userNameError" class="hidden">please enter a valid username</p>
   <input type="text" id="username" name="username"><br>
   <label for="pwd">Password:</label><br>
+  <p id="pdwError" class="hidden">please enter a valid username</p>
   <input type="password" id="pwd" name="pwd">
   <input type="submit" id="submit" name="submit">
 </form>
 
+<style>
+	
+	.hidden{
+		display:none;
+	}
+	.show{
+		display: block;
+		color: red;
+	}
+
+</style>
+
 
 <script>
-	
+	let form = document.getElementById("form");
 	let submit = document.getElementById("submit");
+	let pwdError = document.getElementById("userNameError");
+	let userNameError = document.getElementById("pdwError");
 
-	document.getElementById("submit").addEventListener("click",function(){
+	document.getElementById("submit").addEventListener("click",function(e){
+		e.preventDefault();
 		let userName = document.getElementById("username").value;
 		let pass = document.getElementById("pwd").value;
 
-		alert(userName);
-		alert(pass);
-		alert(pass);
-
-
-		if(pass.value.length==0){
-			alert('please enter a valid pwd');
+		console.log(userName);
+		console.log(pass);
+		
+		if(pass.length==0){
+			pwdError.classList.add("show");
 		}
+
+
 	});
 
 </script>
