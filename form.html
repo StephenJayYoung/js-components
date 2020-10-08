@@ -1,4 +1,5 @@
-<form id="form">
+<h2 id="formSubmitted" class="hidden">Thank You, Your Form Has Been Submitted</h2>
+<form id="mainForm">
   <label for="email">email:</label><br>
   <p id ="emailError" class="hidden">please enter a valid email</p>
   <input type="text" id="email" name="email"><br>
@@ -10,8 +11,6 @@
 
 <style>
 	
-	
-
 	#submit{
 		display: block;;
 	}
@@ -19,6 +18,7 @@
 	.hidden{
 		display:none;
 	}
+
 	.show{
 		display: block;
 		color: red;
@@ -28,10 +28,11 @@
 
 
 <script>
-	let form = document.getElementById("form");
+	let form = document.getElementById("mainForm");
 	let submit = document.getElementById("submit");
 	let emailErr = document.getElementById("emailError");
 	let pwdErr = document.getElementById("pwdError");
+	let submitMessage = document.getElementById("formSubmitted");
 
 
 	function validateEmail(e) {
@@ -64,10 +65,10 @@
 			console.log('valid password');
 		}
 		if (validateEmail(email) && (pass.length>0)){
-			console.log('email and password are valid')
+			console.log('email and password are valid');
+			form.classList.add("hidden");
+			submitMessage.classList.add("show");
 		}
-
-
 
 	});
 
