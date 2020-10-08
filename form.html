@@ -1,18 +1,35 @@
+
 <h2 id="formSubmitted" class="hidden">Thank You, Your Form Has Been Submitted</h2>
 <form id="mainForm">
-  <label for="email">email:</label><br>
-  <p id ="emailError" class="hidden">please enter a valid email</p>
+  <label for="email">Email:</label><br>
+  <p id ="emailError" class="hidden">Please enter a valid email</p>
   <input type="text" id="email" name="email"><br>
   <label for="pwd">Password:</label><br>
-  <p id="pwdError" class="hidden">please enter a valid password</p>
+  <p id="pwdError" class="hidden">Please enter a valid password</p>
   <input type="password" id="pwd" name="pwd">
   <input type="submit" id="submit" name="submit">
 </form>
 
 <style>
 	
+	form{
+		margin-top: 20px;
+	}
+
+	p, label, #submit{
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	#email, #pwd{
+		margin-bottom: 20px;
+	}
+
+	#mainForm{
+		background: ;
+	}
+
 	#submit{
-		display: block;;
+		display: block;
 	}
 
 	.hidden{
@@ -42,32 +59,23 @@
 
 	document.getElementById("submit").addEventListener("click",function(event){
 		
-		// prevent form from submitting for testing
+		// prevent form from submitting for testing. This should be removed before form is live.
 		event.preventDefault();
 
 		let email = document.getElementById("email").value;
 		let pass = document.getElementById("pwd").value;
 
-		console.log(email);
-		console.log(pass);
-
-		if (validateEmail(email)){
-			console.log('email is valid');
-		}
 		if (!validateEmail(email)){
-			console.log('email is not valid');
 			emailErr.classList.add("show");
 		}
 		if(pass.length==0){
 			pwdErr.classList.add("show");
 		}
-		if(pass.length>0){
-			console.log('valid password');
-		}
 		if (validateEmail(email) && (pass.length>0)){
 			console.log('email and password are valid');
 			form.classList.add("hidden");
 			submitMessage.classList.add("show");
+			return email + pass;
 		}
 
 	});
