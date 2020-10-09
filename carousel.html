@@ -1,8 +1,11 @@
 <style>
 
     .container{
-        display: flex;
-        align-items: center;
+        position: relative;  /* 'fixed' will work also. */
+        max-width: 250px;    /* Your required width here. */
+        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .card {
@@ -13,27 +16,27 @@
       overflow: hidden;
     }
     
-      .card__description {
+    .card__description {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 15px 0;
-      }
+    }
+        
+    .card__descriptionIcon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
     
-        .card__descriptionIcon {
-          font-size: 32px;
-          margin-bottom: 10px;
-        }
+    .card__descriptionText {
+        color: #57727C;
+        font-size: 12px;
+        text-align: center;
+        max-width: calc(100% - 30px);
+    }
     
-        .card__descriptionText {
-          color: #57727C;
-          font-size: 12px;
-          text-align: center;
-          max-width: calc(100% - 30px);
-        }
-    
-      .card__price {
+    .card__price {
         text-align: center;
         color: #57727C;
         font-size: 12px;
@@ -41,7 +44,7 @@
         padding: 5px 15px;
         border-top: 1px solid #D7DBDD;
         background-color: #EEF3F5;
-      }
+    }
     
     .card--fixedWidth {
       max-width: 300px;
@@ -53,31 +56,46 @@
     }
 
     #chevron-left{
-        margin-right: 10px
+        position: absolute;
+        left: -30px;
+        top: 20%;
     }
 
     #chevron-right{
-        margin-left: 10px
+        position: absolute;
+        right: -30px;
+        top: 20%;
     }
 
 
     /* keyframe for moving card to the left */
 
     .slide-left{
-        animation: slide 2s linear;
+        animation: slide-left 2s linear;
     }
 
-    @keyframes slide{
+    .slide-right{
+        animation: slide-right 2s linear;
+    }
+
+    @keyframes slide-left{
         0% {
             left: 0;
         }
         100% {
             transform: translateX(-100vw);
-
         }
-}
+    }
 
-    /* keyframe for moving card to the right */
+    @keyframes slide-right{
+        0% {
+            right: 0;
+        }
+        100% {
+            transform: translateX(100vw);
+        }
+    }
+
 
 
     </style>
@@ -85,7 +103,6 @@
 
     <div class="container">
 
-        <div class="chevron" id="chevron-left"><</div>
 
         <div class="card card--fixedWidth">
             <div class="card__description">
@@ -94,6 +111,8 @@
             </div>
             <div class="card__price">This is some info about card 1</div>
           </div>
+
+        <div class="chevron" id="chevron-left"><</div>
 
           <div class="chevron" id="chevron-right">></div>
     </div>
@@ -104,13 +123,18 @@
         let lChevron = document.getElementById("chevron-left");
         let rChevron = document.getElementById("chevron-right");
 
-
         lChevron.onclick = function(){
             card.classList.add("slide-left");
             console.log('slide it left');
         }
 
+        rChevron.onclick = function(){
+            card.classList.add("slide-right");
+            console.log('slide it right');
+        }
 
+
+        let item
 
 
     </script>
