@@ -1,0 +1,116 @@
+<style>
+
+    .container{
+        display: flex;
+        align-items: center;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #CAD0D2;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+      .card__description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+      }
+    
+        .card__descriptionIcon {
+          font-size: 32px;
+          margin-bottom: 10px;
+        }
+    
+        .card__descriptionText {
+          color: #57727C;
+          font-size: 12px;
+          text-align: center;
+          max-width: calc(100% - 30px);
+        }
+    
+      .card__price {
+        text-align: center;
+        color: #57727C;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 5px 15px;
+        border-top: 1px solid #D7DBDD;
+        background-color: #EEF3F5;
+      }
+    
+    .card--fixedWidth {
+      max-width: 300px;
+    }
+
+    .chevron{
+        cursor: pointer;
+        font-size: 35px;
+    }
+
+    #chevron-left{
+        margin-right: 10px
+    }
+
+    #chevron-right{
+        margin-left: 10px
+    }
+
+
+    /* keyframe for moving card to the left */
+
+    .slide-left{
+        animation: slide 2s linear;
+    }
+
+    @keyframes slide{
+        0% {
+            left: 0;
+        }
+        100% {
+            transform: translateX(-100vw);
+
+        }
+}
+
+    /* keyframe for moving card to the right */
+
+
+    </style>
+    
+
+    <div class="container">
+
+        <div class="chevron" id="chevron-left"><</div>
+
+        <div class="card card--fixedWidth">
+            <div class="card__description">
+              <div class="icon fa fa-flask card__descriptionIcon"></div>
+              <div class="card__descriptionText">Card 1</div>
+            </div>
+            <div class="card__price">This is some info about card 1</div>
+          </div>
+
+          <div class="chevron" id="chevron-right">></div>
+    </div>
+
+
+    <script>
+        let card = document.querySelector(".card");
+        let lChevron = document.getElementById("chevron-left");
+        let rChevron = document.getElementById("chevron-right");
+
+
+        lChevron.onclick = function(){
+            card.classList.add("slide-left");
+            console.log('slide it left');
+        }
+
+
+
+
+    </script>
