@@ -9,11 +9,16 @@
     }
 
     .card {
+      opacity: 0;
       display: flex;
       flex-direction: column;
       border: 1px solid #CAD0D2;
       border-radius: 4px;
       overflow: hidden;
+    }
+
+    .initial{
+        opacity: 1;
     }
     
     .card__description {
@@ -48,6 +53,7 @@
     
     .card--fixedWidth {
       max-width: 300px;
+      transform-style: preserve-3d;
     }
 
     .chevron{
@@ -67,6 +73,19 @@
         top: 20%;
     }
 
+    /* Previous and Next  */
+    .prev,
+    .next {
+        z-index: 800;
+    }
+
+    .prev {
+        transform: translateX(-350); /* Move 'prev' item to the left */
+    }
+
+    .next {
+        transform: translateX(350px); /* Move 'next' item to the right */
+    }
 
     /* keyframe for moving card to the left */
 
@@ -105,6 +124,13 @@
 
     <div class="container">
 
+        <div class="card initial card--fixedWidth">
+            <div class="card__description">
+              <div class="icon fa fa-flask card__descriptionIcon"></div>
+              <div class="card__descriptionText">Card 1</div>
+            </div>
+            <div class="card__price">This is some info about card 1</div>
+        </div>
 
         <div class="card card--fixedWidth">
             <div class="card__description">
@@ -112,7 +138,15 @@
               <div class="card__descriptionText">Card 1</div>
             </div>
             <div class="card__price">This is some info about card 1</div>
-          </div>
+        </div>
+
+        <div class="card card--fixedWidth">
+            <div class="card__description">
+              <div class="icon fa fa-flask card__descriptionIcon"></div>
+              <div class="card__descriptionText">Card 1</div>
+            </div>
+            <div class="card__price">This is some info about card 1</div>
+        </div>        
 
         <div class="chevron" id="chevron-left"><</div>
 
@@ -121,28 +155,63 @@
 
 
     <script>
-        let card = document.querySelector(".card");
-        let lChevron = document.getElementById("chevron-left");
-        let rChevron = document.getElementById("chevron-right");
+        // let card = document.querySelector(".card");
+        // let lChevron = document.getElementById("chevron-left");
+        // let rChevron = document.getElementById("chevron-right");
 
-        lChevron.onclick = function(){
+        // lChevron.onclick = function(){
             
-            if(!card.classList.contains(".slide-left")){
-                card.classList.remove("slide-right");
-                card.classList.add("slide-left");
-            }
+        //     if(!card.classList.contains(".slide-left")){
+        //         card.classList.remove("slide-right");
+        //         card.classList.add("slide-left");
+        //     }
             
-        }
+        // }
 
-        rChevron.onclick = function(){
-            if(!card.classList.contains(".slide-right")){
-                card.classList.remove("slide-left");
-                card.classList.add("slide-right");
-            }
-        }
+        // rChevron.onclick = function(){
+        //     if(!card.classList.contains(".slide-right")){
+        //         card.classList.remove("slide-left");
+        //         card.classList.add("slide-right");
+        //     }
+        // }
+
+        // new code - trying something different
+
+        // 1. add the classes of previous and active and next to the sliders not in the screen
+        // 2. add event listeners for the click events for the buttons. 
+        // 3. add function for the next and the previous buttons
+        // 4. the function for the next should make the slide be ++. The functions for the previous should make the slide be --. Both, on click, should run a function that moves the carousel to the next slide
+        // 5. update the old slide with the new one
+        // 6. add and remove classes on the click
+        // call the functions with an immedietly invoked function
 
 
-        let item
+
+
+        // var itemClassName = "card";
+        // items = document.getElementsByClassName(itemClassName),
+        // totalItems = items.length,
+        // slide = 0,
+        // moving = true;
+
+        // function setInitialClasses() {
+        //     // Targets the previous, current, and next items
+        //     // This assumes there are at least three items.
+        //     items[totalItems - 1].classList.add("prev");
+        //     items[0].classList.add("active");
+        //     items[1].classList.add("next");
+        //     }
+        //     // Set event listeners
+        //     function setEventListeners() {
+        //         var next = document.getElementsByClassName('chevron-right')[0],
+        //             prev = document.getElementsByClassName('chevron-right')[0];
+        //         next.addEventListener('click', moveNext);
+        //         prev.addEventListener('click', movePrev);
+        //     }
+
+        //     items[totalItems - 1].classList.add("prev");
+        //     items[0].classList.add("active");
+        //     items[1].classList.add("next");
 
 
     </script>
